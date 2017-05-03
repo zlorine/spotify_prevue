@@ -1,7 +1,7 @@
 <template>
   <div>
     <app-search @searchString="searchSong"></app-search>
-    <app-grid></app-grid>
+    <app-grid :tracks="tracks"></app-grid>
   </div>
 </template>
 
@@ -9,11 +9,16 @@
 
   import Search from './Search.vue'; 
   import Grid from './Grid.vue';
+  import axios from 'axios';
+
 
   export default {
     data: function() {
       return {
         tracks: [
+
+        ],
+        errors: [
 
         ]
       }
@@ -24,22 +29,21 @@
     },
     methods: {
       searchSong(string) {
-        var xhr = new XMLHttpRequest();
-          xhr.open('GET', 'https://api.spotify.com/v1/search?type=track&q=' + string);
-          xhr.onload = function() {
-              if (xhr.status === 200) {
-                  console.log('request successful')
-              }
-              else {
-                  alert('Request failed.  Returned status of ' + xhr.status);
-              }
-          };
-          xhr.send();
-          displayTracks(xhr.response)
+        axios.get('https://api.spotify.com/v1/search?type=track&q=' + string)
+          .then(response => {
+            this.tracks = response.data.tracks.items
+          })
+          .catch(e => {
+            console.log(e)
+            this.errors.push(e)
+        })
+
       },
+
       displayTracks(tracks) {
-        debugger;
+
       }
+      
     }
   }
 
