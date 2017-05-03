@@ -32,6 +32,7 @@ const store = new Vuex.Store({
 
 	actions : {
 		SEARCH_TRACKS: function ({commit}, string) {
+			commit('EMPTY_TRACKS')
 			axios.get('https://api.spotify.com/v1/search?type=track&q=' + string)
 	          .then(response => {
 	            commit('SET_LIST', {list: response.data.tracks.items})
@@ -40,6 +41,12 @@ const store = new Vuex.Store({
 	            console.log(e)
 	        })
 			}
+	},
+
+	getters: {
+		getTracks: state => {
+			return state.tracks
+		}
 	}
 
 

@@ -19,15 +19,17 @@
 		},
 		methods: {
 			searchSong() {
-				this.$emit('searchString', this.song),
+				this.$store.dispatch('SEARCH_TRACKS', this.song)
 				this.song = ''
 			}
+
 		}
 	}
 
 </script>
 
 <style scoped>
+
 	.forms-holder {
 		width: 100%;
 		display: flex;
@@ -38,4 +40,5 @@
 		background-color: #d2d2d2;
 		color: #222;
 	}
+
 </style>

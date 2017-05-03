@@ -11,7 +11,6 @@
   import Grid from './Grid.vue';
   import axios from 'axios';
 
-
   export default {
     data: function() {
       return {
@@ -21,13 +20,7 @@
     components: {
       appSearch: Search,
       appGrid: Grid
-    },
-    methods: {
-      searchSong(string) {
-        this.$store.dispatch('SEARCH_TRACKS', string)
-      }
-      
-    }
+    }     
   }
 
 
