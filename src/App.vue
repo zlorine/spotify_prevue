@@ -2,7 +2,7 @@
   <div id="app">
       <div class="row top-row">
          <div class="large-2 medium-12 small-12 columns"><img class="large-12 medium-4 small-5" src="./assets/logo.png"></div>
-         <div class="large-10 medium-12 columns static-title"><h1>PreVue Spotify Songs</h1></div>
+         <div class="large-6 medium-12 columns static-title"><h1>PreVue Spotify Songs</h1></div>
       </div>
     <router-view></router-view>
   </div>
@@ -38,7 +38,7 @@
     padding: 20px;
   }
 
-  h1, h2, h3, h4, h5 {
+  h1, h2, h3, h4, h5, p, li, button, input {
     font-family: 'Comfortaa';
   }
 
@@ -47,7 +47,6 @@
   }
 
   p, li {
-    font-family: 'Comfortaa';
     color: #222;
   }
 
@@ -68,10 +67,20 @@
   .top-row {
     padding-bottom: 1vh;
     margin-bottom: 5vh;
+    display: flex;
+    justify-content: space-around;
   }
 
   .static-title {
     padding-top: 10px;
   }
+
+@media screen and (max-width: 63.99em) {
+
+  .top-row {
+    display: block;
+
+  }
+}
 
 </style>
