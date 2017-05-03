@@ -1,7 +1,7 @@
 <template>
   <div>
     <app-search @searchString="searchSong"></app-search>
-    <app-grid :tracks="tracks"></app-grid>
+    <app-grid></app-grid>
   </div>
 </template>
 
@@ -15,12 +15,7 @@
   export default {
     data: function() {
       return {
-        tracks: [
 
-        ],
-        errors: [
-
-        ]
       }
     },
     components: {
@@ -29,19 +24,7 @@
     },
     methods: {
       searchSong(string) {
-        axios.get('https://api.spotify.com/v1/search?type=track&q=' + string)
-          .then(response => {
-            this.tracks = response.data.tracks.items
-          })
-          .catch(e => {
-            console.log(e)
-            this.errors.push(e)
-        })
-
-      },
-
-      displayTracks(tracks) {
-
+        this.$store.dispatch('SEARCH_TRACKS', string)
       }
       
     }
