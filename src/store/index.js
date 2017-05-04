@@ -18,11 +18,13 @@ const store = new Vuex.Store({
 	    },
 
 		ADD_TO_FAVS: state => {
-			state.favourites.push(activeTrack)
+			state.favourites.push(state.activeTrack)
 		},
 
 		REMOVE_FROM_FAVS: state => {
-			state.favourites.$remove(state.activeTrack)
+			state.favourites = state.favourites.filter(function (track) {
+				return track != activeTrack
+			})
 			activeTrack = {}
 		},
 
@@ -51,11 +53,12 @@ const store = new Vuex.Store({
 			commit('SET_ACTIVE_TRACK', {track: track});
 		},
 
-		FAV_TRACK: function ({commit}) {
-			if(state.favourites.indexOf(state.activeTrack) != -1 ){
-				commit('ADD_TO_FAVS')
+		FAV_TRACK: function (context) {
+			// didnt' manage to do this with ES2015 argument destructuring - to refactor
+			if(context.state.favourites.indexOf(context.state.activeTrack) == -1 ){
+				context.commit('ADD_TO_FAVS')
 			} else {
-				commit('REMOVE_FROM_FAVS')
+				context.commit('REMOVE_FROM_FAVS')
 			}
 		},
 
