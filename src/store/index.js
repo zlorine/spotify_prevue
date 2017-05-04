@@ -17,8 +17,13 @@ const store = new Vuex.Store({
 	      	state.tracks = list
 	    },
 
-		FAV_TRACK: state => {
-			state.activeTrack.favourite = !state.activeTrack.favourite
+		ADD_TO_FAVS: state => {
+			state.favourites.push(activeTrack)
+		},
+
+		REMOVE_FROM_FAVS: state => {
+			state.favourites.$remove(state.activeTrack)
+			activeTrack = {}
 		},
 
 		SET_ACTIVE_TRACK: (state, track) => {
@@ -32,7 +37,7 @@ const store = new Vuex.Store({
 
 	actions : {
 		SEARCH_TRACKS: function ({commit}, string) {
-			commit('EMPTY_TRACKS')
+			commit('EMPTY_TRACKS');
 			axios.get('https://api.spotify.com/v1/search?type=track&q=' + string)
 	          .then(response => {
 	            commit('SET_LIST', {list: response.data.tracks.items})
@@ -40,12 +45,29 @@ const store = new Vuex.Store({
 	          .catch(e => {
 	            console.log(e)
 	        })
+		},
+
+		ACTIVE_TRACK: function ({commit}, track) {
+			commit('SET_ACTIVE_TRACK', {track: track});
+		},
+
+		FAV_TRACK: function ({commit}) {
+			if(state.favourites.indexOf(state.activeTrack) != -1 ){
+				commit('ADD_TO_FAVS')
+			} else {
+				commit('REMOVE_FROM_FAVS')
 			}
+		},
+
+
 	},
 
 	getters: {
 		getTracks: state => {
 			return state.tracks
+		},
+		activeTrack: state => {
+			return state.activeTrack
 		}
 	}
 
@@ -53,3 +75,4 @@ const store = new Vuex.Store({
 });
 
 export default store
+

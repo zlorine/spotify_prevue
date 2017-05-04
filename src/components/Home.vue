@@ -1,6 +1,6 @@
 <template>
   <div>
-    <app-search @searchString="searchSong"></app-search>
+    <app-search></app-search>
     <app-grid></app-grid>
   </div>
 </template>
