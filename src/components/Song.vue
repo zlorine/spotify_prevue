@@ -9,11 +9,6 @@
 	</div>
 </template>
 
-<script>
-
-
-</script>
-
 <style scoped>
 
 img {
@@ -44,17 +39,17 @@ div.active > div {
 
 .bts {
 	position: absolute;
-	bottom: 0;
-	width: 100%;
+	bottom: 2vh;
+	left: 2vh;
+	width: calc(100% - 4vh);
 	color: #d6d6d6;
 	background-color: white;
 	height: 20%;
 	display: flex;
 	flex-direction: row;
 	justify-content: space-around;
-	left: 0;
-	-webkit-box-shadow: 1px -10px 2px 2px rgba(255,255,255,255);
-	box-shadow: 1px -10px 2px 2px rgba(255,255,255,255);
+	-webkit-box-shadow: 0px -10px 2px 2px rgba(255,255,255,255);
+	box-shadow: 0px -10px 2px 2px rgba(255,255,255,255);
 	font-size: 3rem;
 	padding: 1rem;
 }

@@ -1,9 +1,4 @@
 <template>
-  <div id="app">
-      <div class="row top-row">
-         <div class="large-2 medium-12 small-12 columns"><img class="large-12 medium-4 small-5" src="./assets/logo.png"></div>
-         <div class="large-6 medium-12 columns static-title"><h1>PreVue Spotify Songs</h1></div>
-      </div>
     <router-view></router-view>
   </div>
 </template>
@@ -11,12 +6,19 @@
 <script>
 
   import Home from './components/Home.vue';
-
+  import Favourites from './components/Favourites.vue';
+  import store from './store';
+  
   export default {
     name: 'app',
     components: {
       appHome: Home 
-    }
+    },
+    beforeRouteEnter: function(to, from, next) {
+      console.log('fottiti')
+        this.$store.dispatch('A_TOGGLE_FAVS')
+          next(console.log('fottiti'));
+    },
   }
 
 </script>
@@ -43,11 +45,11 @@
   }
 
   h1 {
-    color: #d2d2d2;
+    color: #222;
   }
 
-  p, li {
-    color: #222;
+  p, li, a {
+    color: #d2d2d2;
   }
 
   ul {
@@ -58,10 +60,6 @@
   li {
     display: inline-block;
     margin: 0 10px;
-  }
-
-  a {
-    color: #42b983;
   }
 
   .top-row {

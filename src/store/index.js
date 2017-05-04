@@ -9,7 +9,8 @@ const store = new Vuex.Store({
 	state : {
 		tracks: [],
 		favourites: [],
-		activeTrack: {}
+		activeTrack: {},
+		showFavs: false
 	},
 
  	mutations : {
@@ -34,6 +35,10 @@ const store = new Vuex.Store({
 
 		EMPTY_TRACKS: state => {
 			state.tracks.length = 0
+		},
+
+		TOGGLE_FAVS: state => {
+			state.showFavs = !state.showFavs
 		}
 	},
 
@@ -62,6 +67,10 @@ const store = new Vuex.Store({
 			}
 		},
 
+		A_TOGGLE_FAVS: function ({commit}) {
+			commit('TOGGLE_FAVS')
+		}
+
 
 	},
 
@@ -71,6 +80,12 @@ const store = new Vuex.Store({
 		},
 		activeTrack: state => {
 			return state.activeTrack
+		},
+		getFavs: state => {
+			return state.favourites.tracks
+		},
+		getShow: state => {
+			return state.showFavs
 		}
 	}
 
