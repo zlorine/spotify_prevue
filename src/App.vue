@@ -18,7 +18,7 @@
       console.log('fottiti')
         this.$store.dispatch('A_TOGGLE_FAVS')
           next(console.log('fottiti'));
-    },
+    }
   }
 
 </script>

@@ -39,7 +39,8 @@ const store = new Vuex.Store({
 		}],
 		favourites: [],
 		activeTrack: {},
-		showFavs: false
+		showFavs: false,
+		player: false
 	},
 
  	mutations : {
@@ -60,6 +61,10 @@ const store = new Vuex.Store({
 
 		SET_ACTIVE_TRACK: (state, track) => {
 			state.activeTrack = track
+		},
+
+		SET_NO_ACTIVE_TRACK: (state, track) => {
+			state.activeTrack = {}
 		},
 
 		EMPTY_TRACKS: state => {
@@ -85,6 +90,10 @@ const store = new Vuex.Store({
 
 		ACTIVE_TRACK: function ({commit}, track) {
 			commit('SET_ACTIVE_TRACK', {track: track});
+		},
+
+		DEACTIVE_TRACK: function ({commit}, track) {
+			commit('SET_NO_ACTIVE_TRACK', {track: track});
 		},
 
 		FAV_TRACK: function (context) {
@@ -115,6 +124,9 @@ const store = new Vuex.Store({
 		},
 		getShow: state => {
 			return state.showFavs
+		},
+		getPlayer: state => {
+			return state.player
 		}
 	}
 

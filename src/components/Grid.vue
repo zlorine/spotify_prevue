@@ -9,7 +9,13 @@
 				<i class="fa fa-play" aria-hidden="true" @click="playModal"></i>
 				<i class="fa fa-star-o"  aria-hidden="true" @click="addToFavs" @keydown="selectMe"></i>
 			</div>
-		</app-song> 
+		</app-song>
+		<app-player v-if="player">
+		  <p class="title"><slot name="title"></slot></p>
+		  <p class="author"><slot name="author"></slot></p>
+		  <img class="player-cover" src="">
+		  <audio class="js-player" src=""></audio>			
+		</app-player> 
 	</div>
 
 </template>
@@ -27,12 +33,14 @@
 				if (this.$store.getters.getShow === false){
 					return this.$store.getters.getTracks
 				} else {
-					debugger;
 					return this.$store.getters.getFavs
 				}
 			},
 			activeTrack() {
 				return this.$store.getters.activeTrack.track		
+			},
+			player() {
+				return this.$store.getters.player
 			}
 		},
 		methods: {
