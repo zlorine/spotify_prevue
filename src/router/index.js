@@ -2,7 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Home from '@/components/Home'
 import Favourites from '@/components/Favourites'
-import store from '@/store'
+import store from '../store'
 
 Vue.use(Router)
 
@@ -17,7 +17,8 @@ export default new Router({
     {
     	path: '/favourites',
     	name: 'Favourites',
-    	component: Favourites
+    	component: Favourites,
+      store
     }
   ]
 })

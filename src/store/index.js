@@ -7,7 +7,36 @@ Vue.use(Vuex);
 const store = new Vuex.Store({
 
 	state : {
-		tracks: [],
+		tracks: [{
+			name: 'Test Song',
+			artists: [
+				{
+					name: 'The Regaz'
+				}
+			],
+			album: {
+				images: [
+					{
+						url: './static/img/logo.d380651.png'
+					}
+				]
+			}
+		},
+		{
+			name: '2 Title 2',
+			artists: [
+				{
+					name: 'The Regaz'
+				}
+			],
+			album: {
+				images: [
+					{
+						url: './static/img/logo.d380651.png'
+					}
+				]
+			}
+		}],
 		favourites: [],
 		activeTrack: {},
 		showFavs: false
@@ -19,7 +48,7 @@ const store = new Vuex.Store({
 	    },
 
 		ADD_TO_FAVS: state => {
-			state.favourites.push(state.activeTrack)
+			state.favourites.push(state.activeTrack.track)
 		},
 
 		REMOVE_FROM_FAVS: state => {
@@ -82,7 +111,7 @@ const store = new Vuex.Store({
 			return state.activeTrack
 		},
 		getFavs: state => {
-			return state.favourites.tracks
+			return state.favourites
 		},
 		getShow: state => {
 			return state.showFavs

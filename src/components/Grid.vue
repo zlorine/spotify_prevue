@@ -27,7 +27,8 @@
 				if (this.$store.getters.getShow === false){
 					return this.$store.getters.getTracks
 				} else {
-					return this.$store.getters.getFavs.tracks
+					debugger;
+					return this.$store.getters.getFavs
 				}
 			},
 			activeTrack() {

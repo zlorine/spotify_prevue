@@ -1,1 +1,17 @@
-Player.vue
+<template>
+	<div>
+
+	<slot></slot>
+
+	</div>
+</template>
+
+<script>
+
+
+</script>
+
+<styles>
+
+
+</styles>

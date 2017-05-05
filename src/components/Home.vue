@@ -29,7 +29,16 @@
     components: {
       appSearch: Search,
       appGrid: Grid
-    }     
+    },
+    beforeRouteLeave: function(to, from, next) {
+      this.$store.dispatch('A_TOGGLE_FAVS')
+      next();
+    },
+    beforeRouteEnter: function(to, from, next) {
+      debugger;
+      from.name === "Favourites" ? this.$store.dispatch('A_TOGGLE_FAVS') : next();
+      next();
+    }      
   }
 
 

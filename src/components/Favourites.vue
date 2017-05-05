@@ -8,6 +8,7 @@
 
   import Search from './Search.vue'; 
   import Grid from './Grid.vue';
+  import store from '../store';
 
   export default {
     data: function() {
@@ -19,9 +20,10 @@
       appSearch: Search,
       appGrid: Grid
     },
-	beforeRouteEnter: function(to, from, next) {
-		// here I would like to access the store and dispatch A_TOGGLE_FAVS but I can't access it (yet)
-  	}
+    beforeRouteLeave: function(to, from, next) {
+      this.$store.dispatch('A_TOGGLE_FAVS')
+      next();
+    } 
   }
 
 
