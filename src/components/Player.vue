@@ -1,6 +1,7 @@
 <template>
-	<div>		
+	 <div class="w-modal">	
 	  <div class="widget">
+	  <slot name="close"></slot>
 		<div class="header">
 			<div class="btn-play"></div>
 			<div class="metadata">
@@ -14,8 +15,7 @@
 		<slot name="js-player"></slot>
 	  </div>
 		<slot></slot>
-
-	</div>
+	 </div>
 </template>
 
 <script>
@@ -23,9 +23,44 @@
 
 </script>
 
-<style>
+<style scoped>
 
 /* AUDIOPLAYER - styles taken from a different project */
+p {
+	color: #222;
+}
+
+.w-modal {
+  position: absolute;
+  z-index: 9999;
+  margin: auto;;
+  background-color: white;
+  height: 50%;
+  width: 50%;
+  top: 25%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: solid 2px #d6d6d6;
+  border-radius: 30px;
+  left: 25%;
+  -webkit-box-shadow: 0px 0px 20px 100px rgba(0,0,0,0.4);
+  box-shadow: 0px 0px 20px 100px rgba(0,0,0,0.4);
+}
+
+.close-modal {
+    width: 36px;
+    height: 36px;
+    font-weight: bold;
+    padding: 8px;
+    position: absolute;
+    right: 10px;
+    top: 20px;
+    z-index: 9999999;
+    color: #222;
+    border-radius: 30px;
+    border: solid 1px #222;
+}
 
 .widget {
   width: 300px;
@@ -33,6 +68,7 @@
   border-radius: 5px;
   overflow: hidden;
   display: block;
+  position: relative;
 }
 
 .header {

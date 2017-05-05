@@ -1,6 +1,5 @@
 <template>
     <router-view></router-view>
-  </div>
 </template>
 
 <script>
@@ -34,6 +33,7 @@
     text-align: center;
     color: #2c3e50;
     margin-top: 60px;
+    position: relative;
   }
 
   body {

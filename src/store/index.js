@@ -47,32 +47,29 @@ const store = new Vuex.Store({
 		SET_LIST: (state, { list }) => {
 	      	state.tracks = list
 	    },
-
 		ADD_TO_FAVS: state => {
 			state.favourites.push(state.activeTrack.track)
 		},
-
 		REMOVE_FROM_FAVS: state => {
 			state.favourites = state.favourites.filter(function (track) {
 				return track != activeTrack
 			})
 			activeTrack = {}
 		},
-
 		SET_ACTIVE_TRACK: (state, track) => {
 			state.activeTrack = track
 		},
-
 		SET_NO_ACTIVE_TRACK: (state, track) => {
 			state.activeTrack = {}
 		},
-
 		EMPTY_TRACKS: state => {
 			state.tracks.length = 0
 		},
-
 		TOGGLE_FAVS: state => {
 			state.showFavs = !state.showFavs
+		},
+		TOGGLE_PLAYER: state => {
+			state.player = !state.player
 		}
 	},
 
@@ -87,7 +84,6 @@ const store = new Vuex.Store({
 	            console.log(e)
 	        })
 		},
-
 		ACTIVE_TRACK: function ({commit}, track) {
 			commit('SET_ACTIVE_TRACK', {track: track});
 		},
@@ -95,7 +91,6 @@ const store = new Vuex.Store({
 		DEACTIVE_TRACK: function ({commit}, track) {
 			commit('SET_NO_ACTIVE_TRACK', {track: track});
 		},
-
 		FAV_TRACK: function (context) {
 			// didnt' manage to do this with ES2015 argument destructuring - to refactor
 			if(context.state.favourites.indexOf(context.state.activeTrack) == -1 ){
@@ -104,9 +99,11 @@ const store = new Vuex.Store({
 				context.commit('REMOVE_FROM_FAVS')
 			}
 		},
-
 		A_TOGGLE_FAVS: function ({commit}) {
 			commit('TOGGLE_FAVS')
+		},
+		A_TOGGLE_PLAYER: function ({commit}) {
+			commit('TOGGLE_PLAYER')
 		}
 
 

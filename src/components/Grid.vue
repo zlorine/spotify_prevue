@@ -11,10 +11,11 @@
 			</div>
 		</app-song>
 		<app-player v-if="player">
-		  <p class="title"><slot name="title"></slot></p>
-		  <p class="author"><slot name="author"></slot></p>
-		  <img class="player-cover" src="">
-		  <audio class="js-player" src=""></audio>			
+		  <p slot="title" class="title"></slot>{{ activeTrack.name }}</p>
+		  <p slot="author" class="author"></slot>{{ activeTrack.artists[0].name }}</p>
+		  <img slot="cover" class="player-cover" :src="activeTrack.album.images[0].url" />
+		  <audio slot="js-player" class="js-player"></audio> 
+		  <div slot="close" class="close-modal" @click="playModal">x</div>		
 		</app-player> 
 	</div>
 
@@ -22,11 +23,13 @@
 
 <script>
 	import Song from './Song.vue';
+	import Player from './Player.vue'
 
 	
 	export default {
 		components: {
-			appSong : Song
+			appSong : Song,
+			appPlayer: Player
 		},
 		computed: {
 			songs() {
@@ -40,7 +43,7 @@
 				return this.$store.getters.activeTrack.track		
 			},
 			player() {
-				return this.$store.getters.player
+				return this.$store.getters.getPlayer
 			}
 		},
 		methods: {
@@ -52,7 +55,7 @@
 				this.$store.dispatch('FAV_TRACK')
 			},
 			playModal() {
-
+				this.$store.dispatch('A_TOGGLE_PLAYER')
 			},
 			selectMe(e) {
 
