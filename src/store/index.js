@@ -7,36 +7,38 @@ Vue.use(Vuex);
 const store = new Vuex.Store({
 
 	state : {
-		tracks: [{
-			name: 'Test Song',
-			artists: [
-				{
-					name: 'The Regaz'
-				}
-			],
-			album: {
-				images: [
-					{
-						url: './static/img/logo.d380651.png'
-					}
-				]
-			}
-		},
-		{
-			name: '2 Title 2',
-			artists: [
-				{
-					name: 'The Regaz'
-				}
-			],
-			album: {
-				images: [
-					{
-						url: './static/img/logo.d380651.png'
-					}
-				]
-			}
-		}],
+		tracks: [
+
+		//  {name: 'Test Song',
+		// 	artists: [
+		// 		{
+		// 			name: 'The Regaz'
+		// 		}
+		// 	],
+		// 	album: {
+		// 		images: [
+		// 			{
+		// 				url: './static/img/logo.d380651.png'
+		// 			}
+		// 		]
+		// 	}
+		// },
+		// {
+		// 	name: '2 Title 2',
+		// 	artists: [
+		// 		{
+		// 			name: 'The Regaz'
+		// 		}
+		// 	],
+		// 	album: {
+		// 		images: [
+		// 			{
+		// 				url: './static/img/logo.d380651.png'
+		// 			}
+		// 		]
+		// 	}
+		// }
+		],
 		favourites: [],
 		activeTrack: {},
 		showFavs: false,

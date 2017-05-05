@@ -3,7 +3,7 @@
 	  <div class="widget">
 	  <slot name="close"></slot>
 		<div class="header">
-			<div class="btn-play"></div>
+			<div class="btn-play" @click="playPreVue"></div>
 			<div class="metadata">
 			  <slot name="title"></slot>
 			  <slot name="author"></slot>			 
@@ -19,7 +19,14 @@
 </template>
 
 <script>
-
+export default {
+  methods: {
+    playPreVue() {
+      var song = document.getElementById("activeSong");
+      song.play();
+    }
+  }
+}
 
 </script>
 
@@ -35,15 +42,15 @@ p {
   z-index: 9999;
   margin: auto;;
   background-color: white;
-  height: 50%;
-  width: 50%;
-  top: 25%;
+  height: 50vh;
+  width: 50vw;
+  top: 25vh;
+  left: 25vw;
   display: flex;
   justify-content: center;
   align-items: center;
   border: solid 2px #d6d6d6;
   border-radius: 30px;
-  left: 25%;
   -webkit-box-shadow: 0px 0px 20px 100px rgba(0,0,0,0.4);
   box-shadow: 0px 0px 20px 100px rgba(0,0,0,0.4);
 }

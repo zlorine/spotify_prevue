@@ -14,7 +14,7 @@
 		  <p slot="title" class="title"></slot>{{ activeTrack.name }}</p>
 		  <p slot="author" class="author"></slot>{{ activeTrack.artists[0].name }}</p>
 		  <img slot="cover" class="player-cover" :src="activeTrack.album.images[0].url" />
-		  <audio slot="js-player" class="js-player"></audio> 
+		  <audio slot="js-player" id="activeSong" class="js-player" :src="activeTrack.preview_url"></audio> 
 		  <div slot="close" class="close-modal" @click="playModal">x</div>		
 		</app-player> 
 	</div>

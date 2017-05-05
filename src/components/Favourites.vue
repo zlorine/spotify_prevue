@@ -5,7 +5,7 @@
          <div class="large-6 medium-12 columns static-title"><h1>PreVue Favourites</h1></div>
       </div>
         <div class="row top-row">
-            <p><router-link to="home"><i class="fa fa-home-o fa-2x"></i> Go to Search Page</router-link></p>
+            <p><a href="/"><i class="fa fa-home-o fa-2x"></i> Go to Search Page</a></p>
         </div>
       <app-grid></app-grid>
     </div>
